@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <h2 style="color:#9e9e9e;">Lugares registrados en {{keyword}}</h2>
+    <!-- Display search results in an ordered list -->
+    <ol>
+        {% for result in results %}
+            <div class="col-sm-6">
+                <div class="card" style="margin-top: 25px;">
+                    <div class="card-body">
+                            <a href="{{ '/program?id=%s'%result.id }}">{{ result.title }}</a>
+                            <hr>
+                        Ciudad {{ result.org }} <br>
+                        Descripción: {{result.description}} <br>
+                        Sitio Web: <a href="{{ result.website }}">{{ result.website }}</a>
+                            
+                    </div>
+                </div>
+            </div>
+            <br>
+        {% endfor %}
+
+
+
+    </ol>
+    <br>
+    <!-- Direct user to program registration page if the desired program is not found -->
+    <strong>
+
+    <p style="color:#9e9e9e;"><a href="/register" style="color: rgb(131, 0, 0);">Agregar un lugar en esta ciudad</a></p>
+    </strong>
+{% endblock %}
